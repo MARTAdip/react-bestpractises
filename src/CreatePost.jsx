@@ -12,8 +12,7 @@ const styles = {
     margin: 0
   }
 }
-// TODO this could be turned into a functional component
-// https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc
+
 export default class CreatePost extends React.Component {
   constructor(props) {
     super(props);

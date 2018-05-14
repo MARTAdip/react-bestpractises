@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
-
-const ThemeContext = React.createContext('dark');
+import { ThemeContext } from './App.jsx';
 
 
 export default function DesktopNav(props) {
@@ -10,16 +9,16 @@ export default function DesktopNav(props) {
      {theme => (
       <ul  className="right hide-on-med-and-down"> 
         <li>
-          <a className={" " + (theme === "dark" ? "white-text" : "red-text")} href="#">Sass</a>
+          <a className={" " + (theme === "light" ? "lime-text" : "red-text")} href="#">Sass</a>
         </li>
         <li>
-          <a className={" " + (theme === "dark" ? "white-text" : "red-text")} href="#">Components</a>
+          <a className={" " + (theme === "light" ? "lime-text" : "red-text")} href="#">Components</a>
         </li>
         <li>
-          <a className={" " + (theme === "dark" ? "white-text" : "red-text")} href="#">Javascript</a>
+          <a className={" " + (theme === "light" ? "lime-text" : "red-text")} href="#">Javascript</a>
         </li>
         <li>
-          <a className={" " + (theme === "dark" ? "white-text" : "red-text")} href="#">Mobile</a>
+          <a className={" " + (theme === "light" ? "lime-text" : "red-text")} href="#">Mobile</a>
         </li>
       </ul> )}
   </ThemeContext.Consumer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
+import { ThemeContext } from './App.jsx';
 
-const ThemeContext = React.createContext('dark');
 
 export default function Sidebar(props) {
   return (

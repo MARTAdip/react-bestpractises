@@ -4,11 +4,11 @@ import Post from './Post.jsx';
 import SearchBar from './SearchBar.jsx';
 import Nav from './Nav.jsx';
 import CreatePost from './CreatePost.jsx';
-//import { response } from '../../../.cache/typescript/2.6/node_modules/@types/spdy';
 
 
 //const theme = "dark"
-const ThemeContext = React.createContext('dark')
+export const ThemeContext = React.createContext()
+
 
 //TODO remove those inline styles and replace by two different themes. Checkout the Nav how the theme is passed down.
 // https://material.io/tools/color/#!/?view.left=0&view.right=0
@@ -170,7 +170,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <ThemeContext.Provider value="dark"> 
+        <ThemeContext.Provider value="light"> 
           <Nav />
         </ThemeContext.Provider>  
         <div className="container" >
