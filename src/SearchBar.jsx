@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
 
 export default function SearchBar(props) {
+  //console.log(props.inputRef)
     return (
       <nav className="red white-text accent-2">
         <div className="nav-wrapper">
@@ -15,3 +17,8 @@ export default function SearchBar(props) {
       </nav>
     )
 };
+
+SearchBar.propTypes = {
+  handleChange: PropTypes.func,
+  inputRef: PropTypes.object
+}

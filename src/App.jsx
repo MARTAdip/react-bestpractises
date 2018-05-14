@@ -4,8 +4,11 @@ import Post from './Post.jsx';
 import SearchBar from './SearchBar.jsx';
 import Nav from './Nav.jsx';
 import CreatePost from './CreatePost.jsx';
+//import { response } from '../../../.cache/typescript/2.6/node_modules/@types/spdy';
 
-const theme = "dark"
+
+//const theme = "dark"
+const ThemeContext = React.createContext('dark')
 
 //TODO remove those inline styles and replace by two different themes. Checkout the Nav how the theme is passed down.
 // https://material.io/tools/color/#!/?view.left=0&view.right=0
@@ -20,18 +23,20 @@ class App extends React.Component {
     super(props);
     //NOTE Read about refs https://reactjs.org/docs/refs-and-the-dom.html
     this.searchRef = React.createRef();
+
     this.state = {
       posts: [],
       form: {},
       search: "",
       editing: null
+      
     }
     //TODO Some of this bindings are not needed anymore
     //handleSubmit and handleChange can be removed but handleDelete not. Fix that
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
+    //this.handleCancel = this.handleCancel.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
   }
   componentDidMount = () => {
@@ -50,13 +55,13 @@ class App extends React.Component {
          }
        }).then(response => response.json())
        .then(response => {
-         M.toast({html: `Post ${form.name} created!`})
+         M.toast({html: `Post ${form.name} created!`})  // M.toast from materialcss
          let posts = [...this.state.posts]
          posts.push(response.post)
          this.setState({posts});
-         document.forms["submitform"].reset()
+         document.forms["submitform"].reset()  //returns a collection listing all the <form> elements contained by the document. .reset will reset the form
        });
-
+       
   }
   handleChange = (event) => {
     let form = { ...this.state.form };
@@ -72,7 +77,7 @@ class App extends React.Component {
 
   handleDelete(id) {
     //TODO this could be replaced by a native fetch
-    axios.delete(`http://localhost:5000/api/posts/${id}`).then(response => {
+    /* axios.delete(`http://localhost:5000/api/posts/${id}`).then(response => {
       console.log("Slide deleted successful: ", response);
       fetch(`http://localhost:5000/api/posts`).then(resp => resp.json()).then(posts => {
         this.setState({posts});
@@ -80,13 +85,31 @@ class App extends React.Component {
       });
     }).catch(function(error) {
       console.log("Error: ", error);
+    }) */
+    let form = {...this.state.form}
+    fetch(`http://localhost:5000/api/posts/${id}`, {
+      method: 'DELETE',
+      body: JSON.stringify(form),
+      headers: {
+        "content-type": "application/json"
+      }
+    }).then(response => {
+      console.log(response);
+      fetch(`http://localhost:5000/api/posts`)
+      .then(resp => resp.json())
+      .then(posts => {
+        this.setState({ posts });
+        M.toast({html: 'Post deleted!'})
+      });
+    }).catch(function(error) {
+        console.log('Erroooor', error)
     })
-  }
+  };
 
   handleUpdate(event, post){
     //TODO this could be replaced by a native fetch
     event.preventDefault()
-    axios.put(`http://localhost:5000/api/posts/${post._id}`, this.state.form).then(response => {
+    /* axios.put(`http://localhost:5000/api/posts/${post._id}`, this.state.form).then(response => {
       console.log("Slide edited successful: ", response);
       fetch(`http://localhost:5000/api/posts`).then(resp => resp.json()).then(posts => {
         this.setState({posts, editing: null});
@@ -95,9 +118,26 @@ class App extends React.Component {
       });
     }).catch(function(error) {
       console.log("Error: ", error);
+    }) */
+    let form = this.state.form;
+    let posts = [...this.state.posts];
+    fetch(`http://localhost:5000/api/posts/${post._id}`,  {
+      method: 'PUT',
+      body: JSON.stringify(form),
+      headers: {
+        'content-type': 'application/json'
+      }
     })
+    .then(response => {
+      fetch(`http://localhost:5000/api/posts`).then(resp => resp.json()).then(posts => {
+        this.setState({posts, editing: null})
+        M.toast({html: 'Post updated successfully!'})
+      });
+    }).catch(function(error) {
+    console.log('Erroooor', error)
+      })
+};
 
-  }
   handleEdit = (post) => {
     this.setState({
       form: post,
@@ -130,7 +170,9 @@ class App extends React.Component {
 
     return (
       <div>
-        <Nav theme={theme}/>
+        <ThemeContext.Provider value="dark"> 
+          <Nav />
+        </ThemeContext.Provider>  
         <div className="container" >
           <div className="my-3 card">
             <CreatePost
@@ -152,4 +194,7 @@ class App extends React.Component {
   }
 }
 
+
+
 export default App;
+
