@@ -1,9 +1,9 @@
-# Superblog API
+# Another Superblog API
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/spielhoelle/superblog.svg)](https://greenkeeper.io/)
 
 This is a little node server with CRUD interface:
-
+![ui app](/relative/path/to/img.jpg?raw=true "Optional Title")
 
 # Installation
 Install npm stuff `npm i`
