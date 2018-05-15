@@ -9,8 +9,8 @@ export default function NavContainer(props) {
   return (
     <div>
       <nav>
-        <div className="nav-wrapper">
-          <a href="#!" className="brand-logo">Logo</a>
+        <div className="nav-wrapper green accent-1">
+          <a href="#!" className="brand-logo green accent-1">Logo</a>
           <a href="#" data-target="mobile-demo" className="sidenav-trigger">
             <i className="material-icons">menu</i>
           </a>

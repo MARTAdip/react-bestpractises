@@ -63,7 +63,7 @@ export default class CreatePost extends React.Component {
           <div style={styles.flexed}>
             <h4 style={styles.nomargin}>Create a post:</h4>
             <div className="form-group">
-              <input className="btn green accent-2" type="submit" value="Submit"/>
+              <input className="btn   lime darken-2" type="submit" value="Submit"/>
             </div>
           </div>
           <div className="form-group">

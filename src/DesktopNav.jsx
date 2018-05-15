@@ -9,16 +9,16 @@ export default function DesktopNav(props) {
      {theme => (
       <ul  className="right hide-on-med-and-down"> 
         <li>
-          <a className={" " + (theme === "light" ? "lime-text" : "red-text")} href="#">Sass</a>
+          <a className={" " + (theme === "light" ? "black-text" : "red-text")} href="#">Sass</a>
         </li>
         <li>
-          <a className={" " + (theme === "light" ? "lime-text" : "red-text")} href="#">Components</a>
+          <a className={" " + (theme === "light" ? "black-text" : "red-text")} href="#">Components</a>
         </li>
         <li>
-          <a className={" " + (theme === "light" ? "lime-text" : "red-text")} href="#">Javascript</a>
+          <a className={" " + (theme === "light" ? "black-text" : "red-text")} href="#">Javascript</a>
         </li>
         <li>
-          <a className={" " + (theme === "light" ? "lime-text" : "red-text")} href="#">Mobile</a>
+          <a className={" " + (theme === "light" ? "black-text" : "red-text")} href="#">Mobile</a>
         </li>
       </ul> )}
   </ThemeContext.Consumer>

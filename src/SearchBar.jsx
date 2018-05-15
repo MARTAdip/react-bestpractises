@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function SearchBar(props) {
   //console.log(props.inputRef)
     return (
-      <nav className="red white-text accent-2">
+      <nav className="green accent-1 white-text ">
         <div className="nav-wrapper">
           <form>
             <div className="input-field">
