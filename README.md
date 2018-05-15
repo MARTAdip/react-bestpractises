@@ -4,7 +4,7 @@
 
 This is a little node server with CRUD interface:
 
-![ui app](./capture2.png?raw=true)
+![ui app](./capure2.png?raw=true)
 
 # Installation
 Install npm stuff `npm i`
