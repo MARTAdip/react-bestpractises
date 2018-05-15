@@ -18,7 +18,7 @@ export default class CreatePost extends React.Component {
     super(props);
     
     this.state = {
-      preview: localStorage.getItem('preview') || "",
+      preview: JSON.parse(localStorage.getItem('preview')) || "",
       file: "",
       imagePreviewUrl: ""
     }
@@ -34,11 +34,12 @@ export default class CreatePost extends React.Component {
     let reader = new FileReader();
     let file = e.target.files[0];
 
-    reader.onloadend = () => {
+    reader.onloadend = (e) => {
       this.setState({
         file: file,
         imagePreviewUrl: reader.result
       });
+      localStorage.setItem('preview', JSON.stringify(e.target.result))
     }
 
     reader.readAsDataURL(file)
