@@ -3,7 +3,8 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/spielhoelle/superblog.svg)](https://greenkeeper.io/)
 
 This is a little node server with CRUD interface:
-![ui app](/relative/path/to/img.jpg?raw=true "Optional Title")
+
+![ui app](./AnotherSuperblog.png?raw=true)
 
 # Installation
 Install npm stuff `npm i`
